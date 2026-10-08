@@ -62,12 +62,6 @@ On-chain components: an agent registry program (listings and metadata), an escro
 
 See the full pitch deck at [docs/pitch.pdf](docs/pitch.pdf) and the spoken pitch script at [docs/pitch-script.md](docs/pitch-script.md).
 
-## Team
-
-- Name / role - [GitHub](https://github.com/)
-- Name / role - [GitHub](https://github.com/)
-- Name / role - [GitHub](https://github.com/)
-
 Built for the Colosseum hackathon.
 
 ---
