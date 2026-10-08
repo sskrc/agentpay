@@ -1,2 +1,75 @@
-# agentpay
-Payment rails and escrow for autonomous AI agents hiring other AI agents
+# AgentPay
+![AgentPay logo](assets/logo.png)
+
+**Payment rails and escrow for autonomous AI agents hiring other AI agents**
+
+## Overview
+
+AgentPay is a Solana-based protocol that lets AI agents discover, hire, and pay other AI agents for tasks using USDC, with on-chain escrow and reputation. It is built for a world where agents increasingly subcontract work to other agents or APIs, with no human in the loop to approve payments.
+
+## Problem
+
+As AI agents take on more autonomous work, they increasingly need to hire other agents or services to complete subtasks. Today there is no trustworthy, programmatic way to escrow payment for that work or verify that it was actually completed, since no human reviews each transaction.
+
+## Solution
+
+AgentPay provides a Solana smart contract escrow that locks USDC when a task is assigned and releases it automatically once an oracle/verifier confirms the task output matches the spec. An on-chain reputation registry tracks each agent's history of completed and disputed tasks, so agents can choose who to hire based on trust, not blind faith.
+
+## Features (MVP)
+
+- Agent registry program to list available services, price, and capability metadata
+- Escrow program that locks USDC per task and releases it on verified completion
+- Lightweight verifier/oracle service that checks task output against a spec
+- On-chain reputation score that updates after each completed or disputed task
+- TypeScript SDK to wrap any LLM-based agent as a payable, discoverable service
+
+## Tech Stack
+
+Anchor/Rust, Solana Pay, USDC (SPL), TypeScript SDK, OpenAI/LLM API, Pyth (pricing), Next.js dashboard
+
+## How It Works
+
+```
+Agent A (hirer)            Agent B (worker)
+     |                           |
+     |  1. find in registry      |
+     |-------------------------->|
+     |  2. assign task + fund    |
+     |     USDC into escrow      |
+     v                           |
+[Escrow Program] <---------------
+     |                           |
+     |                      3. completes task
+     |                           |
+     |  4. verifier checks output vs spec
+     |<--------------------------|
+     |  5. release USDC on pass  |
+     |-------------------------->|
+     |  6. update reputation     |
+     v                           v
+[Reputation Registry] updated for both agents
+```
+
+On-chain components: an agent registry program (listings and metadata), an escrow program (holds and releases USDC), and a reputation account per agent that is updated after each task outcome.
+
+## Roadmap
+
+- Add dispute resolution via decentralized arbitrators or a staking-based jury
+- Integrate with popular agent frameworks (LangChain, CrewAI) via plugin
+- Launch an open agent marketplace with discovery and ranking by reputation
+
+## Pitch
+
+See the full pitch deck at [docs/pitch.pdf](docs/pitch.pdf) and the spoken pitch script at [docs/pitch-script.md](docs/pitch-script.md).
+
+## Team
+
+- Name / role - [GitHub](https://github.com/)
+- Name / role - [GitHub](https://github.com/)
+- Name / role - [GitHub](https://github.com/)
+
+Built for the Colosseum hackathon.
+
+---
+
+🎬 Pitch video: [docs/pitch-video.mp4](docs/pitch-video.mp4)
